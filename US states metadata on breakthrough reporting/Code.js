@@ -52,6 +52,7 @@ function createPivotTable() {
   const airtableLastColumn = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(AIRTABLE_SHEET).getLastColumn();
   console.log(`Airtable: last row = ${airtableLastRow} \n last Column = ${airtableLastColumn}`);
   range = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(RESULTS_SHEET).getRange(ROW_HEADERS);
+  // get sorted, unique values reported in each jurisdiction to utilize as row headers
   range.setFormula(`SORT(UNIQUE(TRANSPOSE(SPLIT(ARRAYFORMULA(CONCATENATE(TRANSPOSE(FILTER(${AIRTABLE_SHEET}!C2:${NUM_RETURN_LETRA(airtableLastColumn)}${airtableLastRow},${AIRTABLE_SHEET}!C2:C${airtableLastRow}>0)&"-"))),"-"))))`);  
 
   // count the number of rows (unique values reported by states)
