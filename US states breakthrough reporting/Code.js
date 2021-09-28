@@ -62,19 +62,6 @@ function reinitializeSourceNotes() {
   const matrixNotesRange = getOneRowRange(MATRIX_SHEET_ID,
     MATRIX_SHEET_NOTES_ROW_NUMBER,
     MATRIX_SHEET_HEADER_ROW_NUMBER); 
-
-  const matrixCols = matrixNotesRange.getNumColumns();
-  const matrixRows = matrixNotesRange.getNumRows();
-  const matrixNotes = matrixNotesRange.getValues();     
-  
-  for(let r = 0; r<matrixRows; r++){
-    for(let c = 0; c<matrixCols; c++) {
-      if(matrixNotes[r][c]) {
-        matrixNotes[r][c] = matrixNotes[r][c] // + "\n\n\n======\nDon't edit these notes, they will be overwritten."
-      }
-    }
-  } 
-
   initializeWorksheetComments(worksheetInputRange, matrixNotesRange);
   return true;
 }
@@ -99,16 +86,6 @@ function initializeWorksheetComments(worksheetInputRange, matrixNotesRange) {
   const matrixNotes = matrixNotesRange.getValues();
 
   Logger.log(`matrixCols = ${matrixCols}\t matrixRows = ${matrixRows}\t matrixNotes = ${matrixNotes}\t`);
-
-
-  for(let r = 0; r<matrixRows; r++){
-    for(let c = 0; c<matrixCols; c++) {
-      if(matrixNotes[r][c]) {
-        matrixNotes[r][c] = matrixNotes[r][c] // + "\n\n\n======\nDon't edit these notes, they will be overwritten."
-      }
-    }
-  } 
-        
   worksheetInputRange.setNotes(matrixNotes);
 }
 
@@ -151,6 +128,5 @@ function findHeaderColumn(sheetId, rowSelector, label){
     }
   }
 }
-
 
 
