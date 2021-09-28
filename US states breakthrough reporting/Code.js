@@ -31,20 +31,6 @@ function confirmReinitializeWorksheet() {
 }
 
 // sets the values of the source links in worksheet based on states matrix tab 
-function reinitializeFormatting() {
-  const sheet = getSheetById(WORKSHEET_SHEET_ID);
-  const firstCol = findHeaderColumn(WORKSHEET_SHEET_ID, `${WQRKSHEET_SHEET_HEADER_ROW_NUMBER}:${WQRKSHEET_SHEET_HEADER_ROW_NUMBER}`,FIRST_STATE);
-  const lastCol = findHeaderColumn(WORKSHEET_SHEET_ID, `${WQRKSHEET_SHEET_HEADER_ROW_NUMBER}:${WQRKSHEET_SHEET_HEADER_ROW_NUMBER}`,LAST_STATE); 
-  const range = sheet.getRange(3,4,45,2) ;//lastCol-firstCol+1);
-  range.setNumberFormat('#,##0');
-  for (let row; row<46;row++){
-    
-  }
-  Logger.log(range.getA1Notation());
-  return true;
-}
-
-// sets the values of the source links in worksheet based on states matrix tab 
 function reinitializeSourceLinks() {
   const matrixSourceLinksRange = getOneRowRange(MATRIX_SHEET_ID,
     MATRIX_SHEET_LINKS_ROW_NUMBER,
